@@ -1,5 +1,3 @@
-## Aplikasi Regresi Linear (Normal Equation) dengan Streamlit
-## Jalankan dengan: streamlit run curve_fitting.py
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -126,6 +124,8 @@ if file is not None:
 
         y_hat = X @ w
         galat = y - y_hat
+        jumlah_galat = float(np.sum(galat))
+        st.metric("Jumlah galat (Σe)", f"{jumlah_galat:.10f}")
         sse = float(np.sum(galat ** 2))
         sst = float(np.sum((y - y.mean()) ** 2))
         r2 = 1 - sse / sst if sst > 0 else float("nan")
